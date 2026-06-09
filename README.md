@@ -12,20 +12,73 @@ This hardware accelerator is designed to overcome the highly predictable, determ
 
 To facilitate reproducibility during the review process, the repository is organized as follows:
 
-```text
-├── hw_src/                    # Synthesizable Verilog RTL source files
-│   ├── bmm_core.v             # Barrett Modular Multiplier pipeline
-│   ├── fisher_yates_fsm.v     # 4-cycle in-place shuffling controller
-│   ├── dynr_top.v             # Top-level integration of the protected IP
-│   └── unprotected_ip.v       # Standard deterministic baseline for comparison
-├── sim/                       # Simulation environments and testbenches
-│   └── tb_dynr.v              # Testbench for verification and trace generation
-├── impl/                      # Xilinx Vivado TCL scripts and constraints
-│   ├── run_synth.tcl          # Batch script for automated implementation
-│   └── constraints.xdc        # Physical constraints for Kintex UltraScale+
-├── eval_scripts/              # Python framework for side-channel analysis
-│   └── tvla_qif_vcd.py        # Parses VCD traces and computes ISO-17825 TVLA
-└── README.md                  # Project documentation
+dynr_pqc_hardware/
+├── README.md                           # Master README with double-blind instructions
+│
+├── hw_src/                             # Unified RTL Source Folder
+│   ├── baseline/                       # ---> YOUR STANDARD IP DESIGN
+│   │   ├── coprocessor.v
+│   │   ├── standard_top.v
+│   │   ├── lift_unit.v
+│   │   ├── mod_add.v
+│   │   ├── mod_mul_30.v
+│   │   ├── ntt_butterfly.v
+│   │   ├── ntt_core.v
+│   │   ├── poly_mem.v
+│   │   ├── rpau.v
+│   │   ├── scale_unit.v
+│   │   ├── twiddle_rom.v
+│   │   ├── gen_twiddle.py
+│   │   ├── barrett_k.txt
+│   │   ├── n_inv.txt
+│   │   ├── rns_primes.txt
+│   │   ├── twiddle_q0.mem
+│   │   ├── twiddle_q1.mem
+│   │   ├── twiddle_q2.mem
+│   │   ├── twiddle_q3.mem
+│   │   ├── twiddle_q4.mem
+│   │   └── twiddle_q5.mem
+│   │
+│   └── proposed/                       # ---> YOUR PROPOSED DYNR DESIGN
+│       ├── acu_unit.v
+│       ├── constant_geometry_logic.v
+│       ├── ntt_intt_hybrid.v
+│       ├── safe_top_engine.v
+│       ├── shuffling_controller.v
+│       ├── shuffling_controller_SECURE.v
+│       ├── shuffling_controller_unprotected.v
+│       ├── vcei_bridge.v
+│       ├── xpm_ram_bank.v
+│       ├── tf_intt.mem
+│       └── tf_ntt.mem
+│
+├── sim/                                # Unified Simulation/Testbench Folder
+│   ├── baseline/                       # Standard IP Testbenches
+│   │   ├── tb_heaws_functional.v
+│   │   ├── tb_heaws_saif.v
+│   │   └── tb_heaws_top.v
+│   │
+│   └── proposed/                       # Proposed Architecture Testbenches
+│       └── tb_hmvp_functional.v
+│
+├── impl/                               # Constraints
+│   └── timing.xdc
+│
+├── eval_scripts/                       # Orchestration, Simulation & Leakage Analysis
+   ├── analysis.py
+   ├── analyze_vcd_sca.py
+   ├── hmvp_model.py
+   ├── plot_unprotected.py
+   ├── security_simulator.py
+   ├── tvla_qif_vcd.py                 # Master 4-panel plotting framework
+   ├── verify_functional.py
+   ├── monolithic_flow.tcl
+   ├── monolithic_flow_protected.tcl
+   ├── post_synth_sim.tcl
+   ├── run_sim.tcl
+   ├── run_vcd_sim.tcl
+   └── vivado_flow.tcl
+
 
 Prerequisites
 
