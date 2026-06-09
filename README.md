@@ -3,6 +3,9 @@
 **[Anonymous Repository for Double-Blind Peer Review]**
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Review](https://img.shields.io/badge/Peer_Review-Double_Blind-purple)](#)
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This repository contains the synthesizable Register-Transfer Level (RTL) code, testbenches, and evaluation scripts for the **DynR (Dynamic Randomization) Architecture**. 
 
