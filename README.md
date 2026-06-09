@@ -12,6 +12,11 @@ This hardware accelerator is designed to overcome the highly predictable, determ
 
 To facilitate reproducibility during the review process, the repository is organized as follows:
 
+## Repository Structure
+
+To facilitate reproducibility during the review process, the repository is organized as follows:
+
+```text
 dynr_pqc_hardware/
 ├── README.md                           # Master README with double-blind instructions
 │
@@ -79,6 +84,8 @@ dynr_pqc_hardware/
    ├── run_vcd_sim.tcl
    └── vivado_flow.tcl
 
+
+```
 
 Prerequisites
 
