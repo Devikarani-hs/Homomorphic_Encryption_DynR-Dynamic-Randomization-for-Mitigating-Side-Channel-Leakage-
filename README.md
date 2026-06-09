@@ -1,6 +1,6 @@
 # DynR: Dynamic Randomization for Mitigating Side-Channel Leakage in PQC
 
-**[Anonymous Repository for Double-Blind Peer Review]**
+
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Review](https://img.shields.io/badge/Peer_Review-Double_Blind-purple)](#)
